@@ -1,0 +1,27 @@
+
+#mynavbar{
+    height:50px;        
+    max-height: 50px;
+    
+}
+
+#list{
+    margin-left: 20px;
+    
+}
+#list> li > a{
+    
+    color: #fa9b49;
+    width: 100px;
+    text-align: center;
+}
+
+#list> li:hover{
+    background-color: #776c5d;
+}
+
+
+
+
+
+
