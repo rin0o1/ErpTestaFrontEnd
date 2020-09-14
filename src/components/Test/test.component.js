@@ -4,16 +4,14 @@ import axios from "axios";
 export default class Test extends Component { 
 
   render() {
+    const url = process.env.REACT_APP_DATAURL;    
+    axios.get(url)
+        .then(x=> console.log(x))                                                                
+        
     return (
-        <button onClick= {this.buttonClicked}>
-            Get tests from database
-        </button>
+      <div>
+
+      </div>        
     );
   }
-
-  buttonClicked (e){
-      console.log("Button clicked");      
-      axios.get('https://erptestabackend.herokuapp.com/test')
-           .then(x=> console.log(x))                                                            
-    }
 }

@@ -12,7 +12,7 @@
 #list> li > a{
     
     color: #fa9b49;
-    width: 100px;
+    width: auto;
     text-align: center;
 }
 

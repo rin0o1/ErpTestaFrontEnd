@@ -5,8 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import NavBar from "./components/NavBar/navbar.component";
 import Home from "./components/Home/home.component";
-import Test from "./components/Test/test.component";
-
+import Preventivi from "./components/Preventivi/preventivi.component";
+import FatturaVendita from "./components/FatturaVendita/fatturavendita.component";
+import FatturaAcquisto from "./components/FatturaAcquisto/fatturaacquisto.component";
 function App() {
   return (
     <Router>
@@ -14,7 +15,9 @@ function App() {
       <NavBar/>
         <br/>
         <Route path="/" exact component={Home} />
-        <Route path="/test" component={Test} />      
+        <Route path="/preventivi" component={Preventivi}  />      
+        <Route path="/fatturaacquisto" component={FatturaAcquisto}  />      
+        <Route path="/fatturavendita" component={FatturaVendita}  />      
       </div>
     </Router>
   );

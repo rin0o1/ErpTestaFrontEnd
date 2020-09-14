@@ -17,12 +17,15 @@ export default class Navbar extends Component {
         <ul id="list"  className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
             <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+          </li>          
+          <li className="nav-item active">
+            <a className="nav-link" href="/preventivi">Preventivi</a>
           </li>
           <li className="nav-item active">
-            <a className="nav-link" href="/test">Test</a>
+            <a className="nav-link" href="/fatturaacquisto">Fattura Acquisto</a>
           </li>
           <li className="nav-item active">
-            <a className="nav-link" href="/test">Preventivi</a>
+            <a className="nav-link" href="/fatturavendita">Fattura Vendita</a>
           </li>
           
         </ul>
