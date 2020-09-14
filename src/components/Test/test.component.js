@@ -13,7 +13,7 @@ export default class Test extends Component {
 
   buttonClicked (e){
       console.log("Button clicked");      
-      axios.get('http://localhost:5000/test')
+      axios.get('https://erptestabackend.herokuapp.com/test')
            .then(x=> console.log(x))                                                            
     }
 }
