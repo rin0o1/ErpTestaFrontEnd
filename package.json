@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "ng build",    
+    "build": "ng build"
   },
   "eslintConfig": {
     "extends": "react-app"
