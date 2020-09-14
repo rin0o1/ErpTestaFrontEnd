@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './navbar.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,7 +16,7 @@ export default class Navbar extends Component {
         <a className="navbar-brand" href="/">EPS</a>
         <ul id="list"  className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item active">
             <a className="nav-link" href="/test">Test</a>
