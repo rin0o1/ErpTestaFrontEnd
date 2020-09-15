@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../Footer/footer.component';
 
 export default class BaseComponent extends Component{         
     
@@ -8,9 +9,8 @@ export default class BaseComponent extends Component{
 
     buildFooter(){
         return(
-        <div>
-            Ciao
-        </div>)
+            <Footer></Footer>
+        );
     }
 
     getDataFromApi(){
