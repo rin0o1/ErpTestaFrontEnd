@@ -1,6 +1,7 @@
 import React, {  } from 'react';
 import axios from "axios";
 import  BaseComponent from "../Shared/base.component.js";
+import FooterModel from "../../models/footer.model";
 
 export default class Preventivi extends BaseComponent {    
 
@@ -13,22 +14,19 @@ export default class Preventivi extends BaseComponent {
     }         
 
     componentDidMount(){    
-        this.init();        
+          //setting footer data                            
+          var myfooterModel= new FooterModel();
+          myfooterModel.IsDefaultFooter=true;
+          myfooterModel.Name="Antonio";
+          
+          axios.get(this.state.url).then(x=> {
+              this.setState({
+                  result:x.data,                
+                  footerModel:myfooterModel
+              })
+          } );        
     }
-
-    //add footer setup
-    init()  {    
-        //setting footer data            
-        const footerdata_= {
-            name:"Marco"
-        };
-        axios.get(this.state.url).then(x=> {
-            this.setState({
-                result:x.data,
-                footerData:footerdata_
-            })
-        } );          
-    }
+        
 
     render() {                                                                      
         

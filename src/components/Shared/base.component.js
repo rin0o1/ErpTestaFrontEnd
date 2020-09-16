@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/footer.component';
-
+import FooterModel from "../../models/footer.model";
 export default class BaseComponent extends Component{  
     constructor(props) {        
         super(props)
 
         //Write here footer props
+        
         this.state = { 
-            c: new MyClass,
-            footerData: {
-                IsDefault:true,
-                name:""
-            }
+            footerModel: undefined,            
         };                    
     }         
     buildFooter(){
 
         return(
-            <Footer data={this.state.footerData} ></Footer>
+            <Footer footerModel={this.state.footerModel} ></Footer>
         );
     }
 }
 
-class MyClass{
 
-}
