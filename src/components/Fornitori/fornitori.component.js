@@ -8,7 +8,7 @@ export default class Fornitori extends BaseComponent {
   constructor(props) {        
     super(props);                 
     this.state = { 
-        url : process.env.REACT_APP_DATAURL_FORNITORI_LOCAL,
+        url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
         result: []
     };                    
 }         
