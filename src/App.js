@@ -8,6 +8,7 @@ import Home from "./components/Home/home.component";
 import Preventivi from "./components/Preventivi/preventivi.component";
 import FatturaVendita from "./components/FatturaVendita/fatturavendita.component";
 import FatturaAcquisto from "./components/FatturaAcquisto/fatturaacquisto.component";
+import Fornitori from "./components/Fornitori/fornitori.component";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/preventivi" component={Preventivi }  />      
         <Route path="/fatturaacquisto" component={FatturaAcquisto}  />      
         <Route path="/fatturavendita" component={FatturaVendita}  />      
+        <Route path="/fornitori" component={Fornitori}  />      
       </div>
     </Router>
   );

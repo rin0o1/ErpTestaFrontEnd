@@ -24,6 +24,9 @@ export default class Navbar extends Component {
           <li className="nav-item active">
             <a className="nav-link" href="/fatturavendita">FATTURA VENDITA</a>
           </li>
+          <li className="nav-item active">
+            <a className="nav-link" href="/fornitori">FORNITORI</a>
+          </li>
           
         </ul>
         <form className="form-inline my-2 my-lg-0">
