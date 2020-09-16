@@ -10,13 +10,15 @@
 }
 #list> li > a{
     
-    color: #fa9b49;
+    color:#f27101;
     width: 200px;
     text-align: center;
+    
 }
 
 #list> li:hover{
-    background-color: #776c5d;
+    background-color: #f2f2f2;
+    transition: color .20s ease-in-out,background-color .20s ease-in-out,border-color .20s ease-in-out,box-shadow .20s ease-in-out;
 }
 
 
