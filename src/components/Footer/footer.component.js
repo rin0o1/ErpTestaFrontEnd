@@ -19,12 +19,10 @@ export default class Footer extends Component{
        //if the footer required is the default one
        if (footerModel.IsDefaultFooter){
         return(    
-            <div className="footer">                     
-                <button class="btn_"><i class="fa fa-home"></i> Home</button>
-                <button class="btn_"><i class="fa fa-plus-circle"></i> Aggiungi</button>
-                <button class="btn_"><i class="fa fa-save"></i> Salva</button>
-                <button class="btn_"><i class="fa fa-trash"></i> Trash</button>                
-            </div>
+                <div className="footer">                     
+                    <button class="btn_"><i class="fa fa-home"></i> Home</button>
+                    <button class="btn_"><i class="fa fa-plus-circle"></i> Nuovo</button>                                
+                </div>
             );
        }
        return (<div >

@@ -19,16 +19,19 @@ componentDidMount(){
       myfooterModel.IsDefaultFooter=true;
       myfooterModel.Name="Antonio";
       
-      axios.get(this.state.url).then(x=> {
-          this.setState({
-              result:x.data,                
-              footerModel:myfooterModel
-          })
-      } );        
-}
-    
+      this.setState({
+        footerModel:myfooterModel
+      });
+      
+}    
 
 render() {                                                                          
+    axios.get(this.state.url).then(x=> {
+        this.setState({
+            result:x.data,                
+            
+        })
+    } );        
     return (
     <div>
       <table id="index-table" class=" table-for-information  col-md-12">
@@ -40,6 +43,8 @@ render() {
               <th>VIA</th>                                                             
               <th>CITTA</th>                      
               <th>POSTCODE</th>                                                               
+              <th> </th>                    
+              
               </tr>
           </thead>
           <tbody>        
@@ -51,6 +56,12 @@ render() {
                       <td> {x.street} </td>
                       <td> {x.city} </td>
                       <td> {x.postcode} </td>                      
+                      <td className="cell-selection-item BiancoOpaco">
+                      <div className="actionSection"  >                                        
+                            <div className="iconAction" title="Modifica"> <i class="fa fa-edit"></i> </div>
+                            <div  title="Rimuovi"> <i class="fa fa-trash"></i> </div>
+                        </div>
+                    </td>
                   </tr>)
               })}          
           </tbody>

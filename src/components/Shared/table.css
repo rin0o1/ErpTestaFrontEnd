@@ -39,3 +39,17 @@
 {
     background-color:#cccaca !important;
 }
+
+.actionSection{
+    display: inline-flex;
+}
+
+.cell-selection-item {
+    width: 100px !important;
+    /*width: auto !important;*/
+    text-align: center;
+}
+
+.iconAction{
+    margin-right: 25px;
+}
