@@ -16,22 +16,22 @@ export default class Navbar extends Component {
         <a className="navbar-brand" href="/">EPS</a>
         <ul id="list"  className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+            <a className="nav-link" href="/">HOME <span className="sr-only">(current)</span></a>
           </li>          
           <li className="nav-item active">
-            <a className="nav-link" href="/preventivi">Preventivi</a>
+            <a className="nav-link" href="/preventivi">PREVENTIVI</a>
           </li>
           <li className="nav-item active">
-            <a className="nav-link" href="/fatturaacquisto">Fattura Acquisto</a>
+            <a className="nav-link" href="/fatturaacquisto">FATTURA ACQUISTO</a>
           </li>
           <li className="nav-item active">
-            <a className="nav-link" href="/fatturavendita">Fattura Vendita</a>
+            <a className="nav-link" href="/fatturavendita">FATTURA VENDITA</a>
           </li>
           
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button  class="  btn  btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>

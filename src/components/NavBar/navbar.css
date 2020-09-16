@@ -1,8 +1,7 @@
 
 #mynavbar{
     height:50px;        
-    max-height: 50px;
-    
+    max-height: 50px;    
 }
 
 #list{
@@ -12,15 +11,13 @@
 #list> li > a{
     
     color: #fa9b49;
-    width: auto;
+    width: 200px;
     text-align: center;
 }
 
 #list> li:hover{
     background-color: #776c5d;
 }
-
-
 
 
 

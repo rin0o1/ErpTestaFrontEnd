@@ -5,28 +5,33 @@ import  BaseComponent from "../Shared/base.component.js";
 export default class Preventivi extends BaseComponent {    
 
     constructor(props) {        
-        super(props); 
-                      
-        console.log(props);
+        super(props);                 
         this.state = { 
             url : process.env.REACT_APP_DATAURL_PREVENTIVI_PROD,
             result: []
         };                    
     }         
 
-    componentDidMount(){
+    componentDidMount(){    
         this.init();        
     }
 
-    init()  {        
+    //add footer setup
+    init()  {    
+        //setting footer data            
+        const footerdata_= {
+            name:"Marco"
+        };
         axios.get(this.state.url).then(x=> {
             this.setState({
-                result:x.data
+                result:x.data,
+                footerData:footerdata_
             })
         } );          
     }
 
     render() {                                                                      
+        
         return (
         <div>
         <table>

@@ -14,8 +14,8 @@ function App() {
       <div className="mycontainer">
       <NavBar/>
         <br/>
-        <Route path="/" exact component={Home} />
-        <Route path="/preventivi" component={Preventivi}  />      
+        <Route path="/" exact component={Home } />
+        <Route path="/preventivi" component={Preventivi }  />      
         <Route path="/fatturaacquisto" component={FatturaAcquisto}  />      
         <Route path="/fatturavendita" component={FatturaVendita}  />      
       </div>
