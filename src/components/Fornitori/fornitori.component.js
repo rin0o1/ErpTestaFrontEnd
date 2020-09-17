@@ -3,12 +3,12 @@ import  BaseComponent from "../Shared/base.component.js";
 import axios from "axios";
 import FooterModel from "../../models/footer.model";
 
-export default class Fornitori extends BaseComponent {
 
+export default class Fornitori extends BaseComponent {
   constructor(props) {        
     super(props);                 
     this.state = { 
-        url : process.env.REACT_APP_DATAURL_FORNITORI_LOCAL,
+        url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
         result: []
     };                    
 }         
@@ -21,16 +21,14 @@ componentDidMount(){
       
       this.setState({
         footerModel:myfooterModel
-      });
-      
+      });      
 }    
 
 render() {                                                                          
 
     axios.get(this.state.url).then(x=> {
         this.setState({
-            result:x.data,                
-            
+            result:x.data,                            
         })
     } );        
 
@@ -45,25 +43,24 @@ render() {
               <th>VIA</th>                                                             
               <th>CITTA</th>                      
               <th>POSTCODE</th>                                                               
-              <th> </th>                    
-              
+              <th> </th>                                  
               </tr>
           </thead>
           <tbody>        
-          {this.state.result && this.state.result.map(x=>{                        
-                
-                  return (<tr id={x._id}>
-                      <td> {x.name} </td>
-                      <td> {x.phoneNumber} </td>
-                      <td> {x.emailAddress} </td>
-                      <td> {x.address.street} </td>
-                      <td> {x.address.city} </td>
-                      <td> {x.address.postcode} </td>                      
-                      <td className="cell-selection-item BiancoOpaco">
-                      <div className="actionSection"  >                                        
+          {this.state.result && this.state.result.map(x=>{                                        
+                  return (
+                    <tr id={x._id}>
+                    <td> {x.name} </td>
+                    <td> {x.phoneNumber} </td>
+                    <td> {x.emailAddress} </td>
+                    <td> {x.address.street} </td>
+                    <td> {x.address.city} </td>
+                    <td> {x.address.postcode} </td>                      
+                    <td className="cell-selection-item BiancoOpaco">
+                    <div className="actionSection"  >                                        
                             <div className="iconAction" title="Modifica"> <i class="fa fa-edit"></i> </div>
                             <div  title="Rimuovi"> <i class="fa fa-trash"></i> </div>
-                        </div>
+                    </div>
                     </td>
                   </tr>)
               })}          
@@ -72,7 +69,5 @@ render() {
       {this.buildFooter()}
     </div>
     );
-
-   
 }
 }
