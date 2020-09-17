@@ -8,7 +8,7 @@ export default class Fornitori extends BaseComponent {
   constructor(props) {        
     super(props);                 
     this.state = { 
-        url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
+        url : process.env.REACT_APP_DATAURL_FORNITORI_LOCAL,
         result: []
     };                    
 }         
@@ -26,12 +26,14 @@ componentDidMount(){
 }    
 
 render() {                                                                          
+
     axios.get(this.state.url).then(x=> {
         this.setState({
             result:x.data,                
             
         })
     } );        
+
     return (
     <div>
       <table id="index-table" class=" table-for-information  col-md-12">
@@ -49,13 +51,14 @@ render() {
           </thead>
           <tbody>        
           {this.state.result && this.state.result.map(x=>{                        
+                
                   return (<tr id={x._id}>
                       <td> {x.name} </td>
                       <td> {x.phoneNumber} </td>
                       <td> {x.emailAddress} </td>
-                      <td> {x.street} </td>
-                      <td> {x.city} </td>
-                      <td> {x.postcode} </td>                      
+                      <td> {x.address.street} </td>
+                      <td> {x.address.city} </td>
+                      <td> {x.address.postcode} </td>                      
                       <td className="cell-selection-item BiancoOpaco">
                       <div className="actionSection"  >                                        
                             <div className="iconAction" title="Modifica"> <i class="fa fa-edit"></i> </div>
