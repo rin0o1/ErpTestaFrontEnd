@@ -21,7 +21,7 @@ export default class Preventivi extends BaseComponent {
           
           axios.get(this.state.url).then(x=> {
               this.setState({
-                  result:x.data,                
+                  
                   footerModel:myfooterModel
               })
           } );        

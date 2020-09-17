@@ -21,7 +21,7 @@ componentDidMount(){
       
       axios.get(this.state.url).then(x=> {
           this.setState({
-              result:x.data,                
+              
               footerModel:myfooterModel
           })
       } );        
@@ -41,12 +41,7 @@ render() {
               </tr>
           </thead>
           <tbody>        
-          {this.state.result && this.state.result.map(x=>{                        
-                  return <tr id={x._id}>
-                      <td> {x.name} </td>
-                      <td> {x.surname} </td>
-                  </tr>
-              })}          
+          
           </tbody>
       </table>
       {this.buildFooter()}

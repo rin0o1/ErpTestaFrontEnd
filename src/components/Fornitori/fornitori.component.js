@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import  BaseComponent from "../Shared/base.component.js";
 import axios from "axios";
 import FooterModel from "../../models/footer.model";
-
+import '../Fornitori/fornitori.css';
 
 export default class Fornitori extends BaseComponent {
   constructor(props) {        
@@ -10,10 +10,10 @@ export default class Fornitori extends BaseComponent {
     this.state = { 
         url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
         result: []
-    };                    
+    };                   
 }         
 
-componentDidMount(){    
+  componentDidMount(){    
       //setting footer data                            
       var myfooterModel= new FooterModel();
       myfooterModel.IsDefaultFooter=true;
@@ -22,17 +22,26 @@ componentDidMount(){
       this.setState({
         footerModel:myfooterModel
       });      
-}    
 
-render() {                                                                          
-
-    axios.get(this.state.url).then(x=> {
+      axios.get(this.state.url).then(x=> {        
         this.setState({
             result:x.data,                            
-        })
-    } );        
+        })});
+  } 
 
-    return (
+  create(){
+
+    return(
+      <div className="Test_">
+
+      </div>    
+    )
+
+  }
+
+ render() {                                                                          
+       
+  return (
     <div>
       <table id="index-table" class=" table-for-information  col-md-12">
           <thead>
@@ -58,16 +67,20 @@ render() {
                     <td> {x.address.postcode} </td>                      
                     <td className="cell-selection-item BiancoOpaco">
                     <div className="actionSection"  >                                        
-                            <div className="iconAction" title="Modifica"> <i class="fa fa-edit"></i> </div>
-                            <div  title="Rimuovi"> <i class="fa fa-trash"></i> </div>
+                            <div className="iconAction" title="Modifica"> <i className="fa fa-edit"></i> </div>
+                            <div  title="Rimuovi"> <i className="fa fa-trash"></i> </div>
                     </div>
                     </td>
                   </tr>)
               })}          
           </tbody>
-      </table>
-      {this.buildFooter()}
+      </table>      
+
+      {this.buildFooter(this.create)}      
+
     </div>
     );
+
+    
 }
 }

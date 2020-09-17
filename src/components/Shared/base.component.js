@@ -11,10 +11,12 @@ export default class BaseComponent extends Component{
             footerModel: undefined,            
         };                    
     }         
-    buildFooter(){
 
+    buildFooter(functToCreate){
         return(
-            <Footer footerModel={this.state.footerModel} ></Footer>
+            <Footer footerModel={this.state.footerModel}
+                    functionToCreate={functToCreate}
+            ></Footer>
         );
     }
 }
