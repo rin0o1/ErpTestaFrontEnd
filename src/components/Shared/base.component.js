@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Footer from '../Footer/footer.component';
 import FooterModel from "../../models/footer.model";
+
 export default class BaseComponent extends Component{  
     constructor(props) {        
-        super(props)
+        super(props)   
 
-        //Write here footer props
-        
-        this.state = { 
-            footerModel: undefined,            
-        };                    
-    }         
+        this.state = {             
+            footerModel: undefined,                        
+            showCreateDialog:false
+        };                                  
+    }   
 
-    buildFooter(functToCreate){
+    closeCreateDialog(){
+        this.setState({
+            showCreateDialog:false
+        })
+    }
+    
+    changeShowCreateDialogProp = showCreateDialog => {
+        this.setState({showCreateDialog});
+    }
+
+    buildFooter(){
         return(
-            <Footer footerModel={this.state.footerModel}
-                    functionToCreate={functToCreate}
+            <Footer footerModel={this.state.footerModel}                                     
+                    onChangeProp= {this.changeShowCreateDialogProp}
             ></Footer>
         );
     }

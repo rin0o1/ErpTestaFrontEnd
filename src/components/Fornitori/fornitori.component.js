@@ -5,13 +5,14 @@ import FooterModel from "../../models/footer.model";
 import '../Fornitori/fornitori.css';
 
 export default class Fornitori extends BaseComponent {
+
   constructor(props) {        
-    super(props);                 
+    super(props);               
     this.state = { 
         url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
-        result: []
+        result: [],        
     };                   
-}         
+  }         
 
   componentDidMount(){    
       //setting footer data                            
@@ -28,16 +29,22 @@ export default class Fornitori extends BaseComponent {
             result:x.data,                            
         })});
   } 
+   
 
   create(){
-
+    //add ! 
+    if(!this.state.showCreateDialog) return;
     return(
-      <div className="Test_">
-
-      </div>    
+      <div  id="createDialog" className="createDialog" >        
+        <div className="buttonContainer">
+          <button className="myButton saveButton" > SAVE </button>
+          <button className="myButton closeButton" onClick={() =>this.closeCreateDialog()}> CLOSE </button>          
+        </div>
+        
+      </div>
     )
-
   }
+ 
 
  render() {                                                                          
        
@@ -76,7 +83,8 @@ export default class Fornitori extends BaseComponent {
           </tbody>
       </table>      
 
-      {this.buildFooter(this.create)}      
+      {this.create()}
+      {this.buildFooter()}      
 
     </div>
     );

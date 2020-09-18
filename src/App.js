@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Route} from "react-router-dom" ;
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../src/components/Shared/table.css";
+import "../src/components/Shared/createDialog.css";
 import NavBar from "./components/NavBar/navbar.component";
 import Home from "./components/Home/home.component";
 import Preventivi from "./components/Preventivi/preventivi.component";
