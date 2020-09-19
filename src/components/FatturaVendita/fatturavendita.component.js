@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import  BaseComponent from "../Shared/base.component.js";
 import axios from "axios";
 import FooterModel from "../../models/footer.model";
