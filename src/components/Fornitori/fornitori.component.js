@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import  BaseComponent from "../Shared/base.component.js";
-import {Form} from 'react-advanced-form';
-import {Input} from 'react-advanced-form-addons';
 import axios from "axios";
 import FooterModel from "../../models/footer.model";
 import '../Fornitori/fornitori.css';
@@ -168,6 +166,7 @@ export default class Fornitori extends BaseComponent {
   }
 
   delete =(e)=> {        
+  
     
     var id_= e.target.id;
 
@@ -205,13 +204,13 @@ export default class Fornitori extends BaseComponent {
                 <td className="cell-selection-item BiancoOpaco">
                 <div className="actionSection"  >                                        
                         <div className="iconAction" title="Modifica"> 
-                          <i className="fa fa-edit"></i> 
+                          <i className=" edit fa fa-edit"></i> 
                         </div>
-                        <div  title="Rimuovi" onClick={(e)=>this.delete(e)} > 
-                          <i id={x._id} className="fa fa-trash" > </i> 
+                        <div  title="Rimuovi" onClick={(e)=>this.delete(e)} >                           
+                          <i id={x._id} className=" remove fa fa-trash" > </i> 
                         </div>
                 </div>
-                </td>
+                </td> 
               </tr>)
               })}          
           </tbody>
@@ -226,3 +225,11 @@ export default class Fornitori extends BaseComponent {
     
 }
 }
+
+//<i id={x._id} className="fa fa-trash" > </i> 
+
+/*
+
+  <div id={x._id} className="removeicon" title="Rimuovi" onClick={(e)=>this.delete(e)} >                           
+                      
+                        </div>*/
