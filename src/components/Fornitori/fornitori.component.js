@@ -12,7 +12,8 @@ export default class Fornitori extends BaseComponent {
     super(props);               
     this.state = { 
         url : process.env.REACT_APP_DATAURL_FORNITORI_PROD,
-        addurl:process.env.REACT_APP_DATAURL_ADDFORNITORI_LOCAL,
+        addurl:process.env.REACT_APP_DATAURL_ADDFORNITORI_PROD,
+        deleteurl:process.env.REACT_APP_DATAURL_DELETEFORNITORI_PROD,
         result: [],
         name :"", 
         phoneNumber:"",
@@ -35,19 +36,15 @@ export default class Fornitori extends BaseComponent {
 
       axios.get(this.state.url).then(x=> {        
         this.setState({
-            result:x.data,                            
-        })});
+            result: x.data,                            
+      })});
   } 
-
   
   async  makeRequest (data) {
     return await axios.post(this.state.addurl, data)
-
   }
 
   submitForm = () =>{                
-       
-    console.log("2here");
     
     var fileToPost={
       name:this.state.name,
@@ -59,7 +56,7 @@ export default class Fornitori extends BaseComponent {
     };
 
     
-    alert (this.makeRequest(fileToPost));
+    this.makeRequest(fileToPost);
 
     this.closeCreateDialog();   
 
@@ -76,7 +73,7 @@ export default class Fornitori extends BaseComponent {
   
    
   create(){
-    //add ! 
+    
     if(!this.state.showCreateDialog) return;
     return(
       <div  id="createDialog" className="createDialog">        
@@ -162,13 +159,23 @@ export default class Fornitori extends BaseComponent {
           
         </form>                
 
-
-        
       </div>
     )
   }
- 
 
+  async  deleteRequest (id) {
+    return await axios.delete(this.state.deleteurl+"/"+id);
+  }
+
+  delete =(e)=> {        
+    
+    var id_= e.target.id;
+
+    this.deleteRequest(id_);    
+
+    window.location.reload(false);
+  };
+ 
  render() {                                                                          
        
   return (
@@ -187,21 +194,25 @@ export default class Fornitori extends BaseComponent {
           </thead>
           <tbody>        
           {this.state.result && this.state.result.map(x=>{                                        
-                  return (
-                    <tr key={x._id}>
-                    <td> {x.name} </td>
-                    <td> {x.phoneNumber} </td>
-                    <td> {x.emailAddress} </td>
-                    <td> {x.address.street} </td>
-                    <td> {x.address.city} </td>
-                    <td> {x.address.postcode} </td>                      
-                    <td className="cell-selection-item BiancoOpaco">
-                    <div className="actionSection"  >                                        
-                            <div className="iconAction" title="Modifica"> <i className="fa fa-edit"></i> </div>
-                            <div  title="Rimuovi"> <i className="fa fa-trash"></i> </div>
-                    </div>
-                    </td>
-                  </tr>)
+              return (
+                <tr id={x._id} key={x._id}>
+                <td> {x.name} </td>
+                <td> {x.phoneNumber} </td>
+                <td> {x.emailAddress} </td>
+                <td> {x.address.street} </td>
+                <td> {x.address.city} </td>
+                <td> {x.address.postcode} </td>                      
+                <td className="cell-selection-item BiancoOpaco">
+                <div className="actionSection"  >                                        
+                        <div className="iconAction" title="Modifica"> 
+                          <i className="fa fa-edit"></i> 
+                        </div>
+                        <div  title="Rimuovi" onClick={(e)=>this.delete(e)} > 
+                          <i id={x._id} className="fa fa-trash" > </i> 
+                        </div>
+                </div>
+                </td>
+              </tr>)
               })}          
           </tbody>
       </table>      
