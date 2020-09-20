@@ -8,9 +8,9 @@ export default class Fornitori extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FORNITORI_LOCAL,
-      addurl: process.env.REACT_APP_DATAURL_ADDFORNITORI_LOCAL,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFORNITORI_LOCAL,
+      url: process.env.REACT_APP_DATAURL_FORNITORI_PROD,
+      addurl: process.env.REACT_APP_DATAURL_ADDFORNITORI_PROD,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFORNITORI_PROD,
       name: "",
       phoneNumber: "",
       emailAddress: "",

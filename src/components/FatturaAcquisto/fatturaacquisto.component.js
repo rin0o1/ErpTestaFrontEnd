@@ -73,7 +73,6 @@ export default class FatturaAcquisto extends BaseComponent {
               <label className="col-md-3">TIPO</label>
               <label className="col-md-6">NUMERO FATTURA</label>
             </div>
-
             <div className="row">
               <input
                 className="col-md-3"
