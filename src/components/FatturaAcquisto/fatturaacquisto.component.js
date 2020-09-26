@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import BaseComponent from "../Shared/base.component.js";
-import axios from "axios";
+import Select from "react-select";
 import FooterModel from "../../models/footer.model";
 
 export default class FatturaAcquisto extends BaseComponent {
   constructor(props) {
     super(props);
+
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PROD,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
+      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_LOCAL,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_LOCAL,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_LOCAL,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPE_LOCAL,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
@@ -17,6 +20,9 @@ export default class FatturaAcquisto extends BaseComponent {
       iva: "",
       totaleFattura: "",
       tipoId: "",
+      speseTypeResult: [],
+      speseTypeName: [],
+      speseTypeId: [],
     };
   }
 
@@ -62,7 +68,13 @@ export default class FatturaAcquisto extends BaseComponent {
   create() {
     if (!this.state.showCreateDialog) return;
 
-    //prendi i tipi
+    if (!this.state.gettinData) {
+      this.getDataWithResult(this.state.speseTypeUrl).then((x) => {
+        this.setState({
+          speseTypeResult: x,
+        });
+      });
+    }
 
     return (
       <div id="createDialog" className="createDialog">
@@ -80,12 +92,17 @@ export default class FatturaAcquisto extends BaseComponent {
                 value={this.state.denominazione}
                 onChange={this.setDenominazione}
               />
-              <input
-                className="col-md-3"
-                type="text"
-                value={this.state.tipoId}
-                onChange={this.setTipoId}
+
+              <Select
+                className="col-md-3 basic-single"
+                classNamePrefix="select"
+                isLoading={false}
+                isClearable={true}
+                isSearchable={true}
+                name="color"
+                options={this.state.speseTypeResult}
               />
+
               <input
                 className="col-md-6"
                 type="text"
@@ -206,7 +223,10 @@ export default class FatturaAcquisto extends BaseComponent {
                         <div className="iconAction" title="Modifica">
                           <i className=" edit fa fa-edit"></i>
                         </div>
-                        <div title="Rimuovi" onClick={(e) => this.delete(e)}>
+                        <div
+                          title="Rimuovi"
+                          onClick={(e) => this.delete(e, this.state.deleteurl)}
+                        >
                           <i id={x._id} className=" remove fa fa-trash"></i>
                         </div>
                       </div>

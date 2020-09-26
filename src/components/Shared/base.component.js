@@ -9,6 +9,7 @@ export default class BaseComponent extends Component {
     this.state = {
       footerModel: undefined,
       showCreateDialog: false,
+      gettinData: false,
       result: [],
     };
   }
@@ -18,6 +19,16 @@ export default class BaseComponent extends Component {
       this.setState({
         result: x.data,
       });
+    });
+  }
+
+  async getDataWithResult(url) {
+    return await axios.get(url).then((x) => {
+      this.setState({
+        gettinData: true,
+      });
+
+      return x.data;
     });
   }
 
@@ -39,7 +50,9 @@ export default class BaseComponent extends Component {
   closeCreateDialog() {
     this.setState({
       showCreateDialog: false,
+      gettinData: false,
     });
+    console.log(this.state.gettinData);
   }
 
   changeShowCreateDialogProp = (showCreateDialog) => {
