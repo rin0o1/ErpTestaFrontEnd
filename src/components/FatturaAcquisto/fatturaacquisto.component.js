@@ -8,7 +8,7 @@ export default class FatturaAcquisto extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PRDO,
+      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PROD,
       addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
       deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_PROD,
       speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
