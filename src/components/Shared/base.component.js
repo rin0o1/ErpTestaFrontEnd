@@ -9,7 +9,9 @@ export default class BaseComponent extends Component {
     this.state = {
       footerModel: undefined,
       showCreateDialog: false,
-      gettinData: false,
+      showEditDialog: false,
+      lastEditElement: undefined,
+
       result: [],
     };
   }
@@ -24,12 +26,12 @@ export default class BaseComponent extends Component {
 
   async getDataWithResult(url) {
     return await axios.get(url).then((x) => {
-      this.setState({
-        gettinData: true,
-      });
-
       return x.data;
     });
+  }
+
+  async editElement(url, id, data) {
+    return await axios.post(url + id, data);
   }
 
   async createElement(url, data) {
@@ -40,9 +42,17 @@ export default class BaseComponent extends Component {
     return await axios.delete(deleteUrl + "/" + id);
   }
 
+  editButtonClicked(e) {
+    var element = this.state.result.find((x) => x._id === e.target.id);
+
+    this.setState({
+      showEditDialog: true,
+      lastEditElement: element,
+    });
+  }
+
   delete = (e, deleteUrl) => {
     var id_ = e.target.id;
-
     this.deleteRequest(id_, deleteUrl);
     window.location.reload(false);
   };
@@ -50,7 +60,7 @@ export default class BaseComponent extends Component {
   closeCreateDialog() {
     this.setState({
       showCreateDialog: false,
-      gettinData: false,
+      showEditDialog: false,
     });
   }
 

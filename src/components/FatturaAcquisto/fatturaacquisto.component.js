@@ -11,6 +11,7 @@ export default class FatturaAcquisto extends BaseComponent {
       url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PROD,
       addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
       deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_PROD,
+      editurl: process.env.REACT_APP_DATAURL_EDITFATTURACQUISTO_PROD,
       speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
       denominazione: "",
       numeroFattura: "",
@@ -35,6 +36,11 @@ export default class FatturaAcquisto extends BaseComponent {
     });
 
     this.getData(this.state.url);
+    this.getDataWithResult(this.state.speseTypeUrl).then((x) => {
+      this.setState({
+        speseTypeResult: x,
+      });
+    });
   }
 
   submitForm = () => {
@@ -48,11 +54,45 @@ export default class FatturaAcquisto extends BaseComponent {
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
     };
-    debugger;
     this.createElement(this.state.addurl, fileToPost);
     this.closeCreateDialog();
+    this.clearObjectProps();
     window.location.reload(false);
   };
+
+  submitFormEdit = () => {
+    var fileToPost = {
+      denominazione: this.state.denominazione,
+      numeroFattura: this.state.numeroFattura,
+      dataDocumento: this.state.dataDocumento,
+      dataPagamento: this.state.dataPagamento,
+      imponibile: this.state.imponibile,
+      iva: this.state.iva,
+      totaleFattura: this.state.totaleFattura,
+      tipoId: this.state.tipoId,
+    };
+    this.editElement(
+      this.state.editurl,
+      this.state.lastEditElement._id,
+      fileToPost
+    );
+    this.closeCreateDialog();
+    this.clearObjectProps();
+    window.location.reload(false);
+  };
+
+  clearObjectProps() {
+    this.setState({
+      denominazione: "",
+      numeroFattura: "",
+      dataDocumento: "",
+      dataPagamento: "",
+      imponibile: "",
+      iva: "",
+      totaleFattura: "",
+      tipoId: "",
+    });
+  }
 
   setDenominazione = (e) => this.setState({ denominazione: e.target.value });
   setNumeroFattura = (e) => this.setState({ numeroFattura: e.target.value });
@@ -63,16 +103,14 @@ export default class FatturaAcquisto extends BaseComponent {
   setTotaleFattura = (e) => this.setState({ totaleFattura: e.target.value });
   setTipoId = (e) => this.setState({ tipoId: e.value });
 
-  create() {
-    if (!this.state.showCreateDialog) return;
+  edit() {
+    if (!this.state.showEditDialog) return;
 
-    if (!this.state.gettinData) {
-      this.getDataWithResult(this.state.speseTypeUrl).then((x) => {
-        this.setState({
-          speseTypeResult: x,
-        });
-      });
-    }
+    var e = this.state.lastEditElement;
+
+    var speseType = this.state.speseTypeResult.find(
+      (x) => x.value === e.tipo._id
+    );
 
     return (
       <div id="createDialog" className="createDialog">
@@ -87,7 +125,130 @@ export default class FatturaAcquisto extends BaseComponent {
               <input
                 className="col-md-3"
                 type="text"
-                value={this.state.denominazione}
+                defaultValue={e.denominazione}
+                onChange={this.setDenominazione}
+              />
+
+              <div class="col-md-3">
+                <Select
+                  className=" basic-single"
+                  classNamePrefix="select"
+                  defaultValue={speseType}
+                  isLoading={false}
+                  isClearable={true}
+                  isSearchable={true}
+                  name="speseType"
+                  options={this.state.speseTypeResult}
+                  onChange={this.setTipoId}
+                />
+              </div>
+
+              <input
+                className="col-md-6"
+                type="text"
+                defaultValue={e.numeroFattura}
+                onChange={this.setNumeroFattura}
+              />
+            </div>
+          </div>
+
+          <br></br>
+          <br></br>
+
+          <div className="col-md-12">
+            <div className="row">
+              <label className="col-md-6">DATA DOCUMENTO</label>
+              <label className="col-md-6">DATA PAGAMENTO</label>
+            </div>
+            <div className="row" name="address">
+              <input
+                className="col-md-6"
+                type="date"
+                defaultValue={e.dataDocumento.substring(0, 10)}
+                onChange={this.setDataDocumento}
+              />
+              <input
+                className="col-md-6"
+                type="date"
+                defaultValue={e.dataPagamento.substring(0, 10)}
+                onChange={this.setDataPagamento}
+              />
+            </div>
+          </div>
+
+          <br></br>
+          <br></br>
+
+          <div className="col-md-12">
+            <div className="row">
+              <label className="col-md-4">IMPONIBILE</label>
+              <label className="col-md-4">IVA</label>
+              <label className="col-md-4">TOTALE FATTURA</label>
+            </div>
+
+            <div className="row">
+              <input
+                className="col-md-4"
+                type="number"
+                defaultValue={e.imponibile}
+                onChange={this.setImponibile}
+              />
+              <input
+                className="col-md-4"
+                type="number"
+                defaultValue={e.iva}
+                onChange={this.setIva}
+              />
+              <input
+                className="col-md-4"
+                type="number"
+                defaultValue={e.totFattura}
+                onChange={this.setTotaleFattura}
+              />
+            </div>
+          </div>
+
+          <div className="buttonContainer">
+            <button
+              className="myButton saveButton"
+              onClick={() => this.submitFormEdit()}
+            >
+              {" "}
+              SAVE{" "}
+            </button>
+            <button
+              className="myButton closeButton"
+              onClick={() => {
+                this.closeCreateDialog();
+                this.clearObjectProps();
+              }}
+            >
+              {" "}
+              CLOSE{" "}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  create() {
+    if (!this.state.showCreateDialog) return;
+
+    return (
+      <div id="createDialog" className="createDialog">
+        <form className="marginTop">
+          <div className="col-md-12">
+            <div className="row">
+              <label className="col-md-3">DENOMINAZIONE</label>
+              <label className="col-md-3">TIPO</label>
+              <label className="col-md-6">NUMERO FATTURA</label>
+            </div>
+            <div className="row">
+              <input
+                className="col-md-3"
+                type="text"
+                value={this.state.denomninazione}
                 onChange={this.setDenominazione}
               />
 
@@ -178,7 +339,9 @@ export default class FatturaAcquisto extends BaseComponent {
             </button>
             <button
               className="myButton closeButton"
-              onClick={() => this.closeCreateDialog()}
+              onClick={() => {
+                this.closeCreateDialog();
+              }}
             >
               {" "}
               CLOSE{" "}
@@ -214,15 +377,19 @@ export default class FatturaAcquisto extends BaseComponent {
                     <td> {x.denominazione} </td>
                     <td> {x.tipo.name} </td>
                     <td> {x.numeroFattura} </td>
-                    <td> {x.dataDocumento} </td>
-                    <td> {x.dataPagamento} </td>
+                    <td> {x.dataDocumento.substring(0, 10)} </td>
+                    <td> {x.dataPagamento.substring(0, 10)} </td>
                     <td> {x.imponibile + "€"} </td>
                     <td> {x.iva + "€"} </td>
                     <td> {x.totFattura + "€"} </td>
                     <td className="cell-selection-item BiancoOpaco">
                       <div className="actionSection">
                         <div className="iconAction" title="Modifica">
-                          <i className=" edit fa fa-edit"></i>
+                          <i
+                            id={x._id}
+                            className=" edit fa fa-edit"
+                            onClick={(e) => this.editButtonClicked(e)}
+                          ></i>
                         </div>
                         <div
                           title="Rimuovi"
@@ -237,6 +404,7 @@ export default class FatturaAcquisto extends BaseComponent {
               })}
           </tbody>
         </table>
+        {this.edit()}
         {this.create()}
         {this.buildFooter()}
       </div>
