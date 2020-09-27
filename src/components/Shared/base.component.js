@@ -52,7 +52,6 @@ export default class BaseComponent extends Component {
       showCreateDialog: false,
       gettinData: false,
     });
-    console.log(this.state.gettinData);
   }
 
   changeShowCreateDialogProp = (showCreateDialog) => {

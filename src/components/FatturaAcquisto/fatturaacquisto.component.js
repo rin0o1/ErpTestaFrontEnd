@@ -8,10 +8,10 @@ export default class FatturaAcquisto extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_LOCAL,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_LOCAL,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_LOCAL,
-      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPE_LOCAL,
+      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PRDO,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_PROD,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
@@ -21,8 +21,6 @@ export default class FatturaAcquisto extends BaseComponent {
       totaleFattura: "",
       tipoId: "",
       speseTypeResult: [],
-      speseTypeName: [],
-      speseTypeId: [],
     };
   }
 
@@ -50,7 +48,7 @@ export default class FatturaAcquisto extends BaseComponent {
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
     };
-
+    debugger;
     this.createElement(this.state.addurl, fileToPost);
     this.closeCreateDialog();
     window.location.reload(false);
@@ -63,7 +61,7 @@ export default class FatturaAcquisto extends BaseComponent {
   setImponibile = (e) => this.setState({ imponibile: e.target.value });
   setIva = (e) => this.setState({ iva: e.target.value });
   setTotaleFattura = (e) => this.setState({ totaleFattura: e.target.value });
-  setTipoId = (e) => this.setState({ tipoId: e.target.value });
+  setTipoId = (e) => this.setState({ tipoId: e.value });
 
   create() {
     if (!this.state.showCreateDialog) return;
@@ -93,15 +91,18 @@ export default class FatturaAcquisto extends BaseComponent {
                 onChange={this.setDenominazione}
               />
 
-              <Select
-                className="col-md-3 basic-single"
-                classNamePrefix="select"
-                isLoading={false}
-                isClearable={true}
-                isSearchable={true}
-                name="color"
-                options={this.state.speseTypeResult}
-              />
+              <div class="col-md-3">
+                <Select
+                  className=" basic-single"
+                  classNamePrefix="select"
+                  isLoading={false}
+                  isClearable={true}
+                  isSearchable={true}
+                  name="speseType"
+                  options={this.state.speseTypeResult}
+                  onChange={this.setTipoId}
+                />
+              </div>
 
               <input
                 className="col-md-6"
