@@ -7,6 +7,7 @@ export default class BaseComponent extends Component {
     super(props);
 
     this.state = {
+      destinationUrl: "PROD",
       footerModel: undefined,
       showCreateDialog: false,
       showEditDialog: false,

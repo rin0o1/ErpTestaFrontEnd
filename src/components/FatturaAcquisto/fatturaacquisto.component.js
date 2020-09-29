@@ -8,18 +8,18 @@ export default class FatturaAcquisto extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PROD,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_PROD,
-      editurl: process.env.REACT_APP_DATAURL_EDITFATTURACQUISTO_PROD,
-      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
+      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_LOCAL,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_LOCAL,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_LOCAL,
+      editurl: process.env.REACT_APP_DATAURL_EDITFATTURACQUISTO_LOCAL,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_LOCAL,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
       dataPagamento: "",
-      imponibile: "",
-      iva: "",
-      totaleFattura: "",
+      imponibile: 0,
+      iva: 0,
+      totaleFattura: 0,
       tipoId: "",
       speseTypeResult: [],
     };
@@ -87,9 +87,9 @@ export default class FatturaAcquisto extends BaseComponent {
       numeroFattura: "",
       dataDocumento: "",
       dataPagamento: "",
-      imponibile: "",
-      iva: "",
-      totaleFattura: "",
+      imponibile: 0,
+      iva: 0,
+      totaleFattura: 0,
       tipoId: "",
     });
   }
@@ -156,19 +156,19 @@ export default class FatturaAcquisto extends BaseComponent {
           <br></br>
 
           <div className="col-md-12">
-            <div className="row">
-              <label className="col-md-6">DATA DOCUMENTO</label>
-              <label className="col-md-6">DATA PAGAMENTO</label>
+            <div className="row ">
+              <label className="col-md-3">DATA DOCUMENTO</label>
+              <label className="col-md-3">DATA PAGAMENTO</label>
             </div>
             <div className="row" name="address">
               <input
-                className="col-md-6"
+                className="col-md-3"
                 type="date"
                 defaultValue={e.dataDocumento.substring(0, 10)}
                 onChange={this.setDataDocumento}
               />
               <input
-                className="col-md-6"
+                className="col-md-3"
                 type="date"
                 defaultValue={e.dataPagamento.substring(0, 10)}
                 onChange={this.setDataPagamento}
@@ -279,18 +279,18 @@ export default class FatturaAcquisto extends BaseComponent {
 
           <div className="col-md-12">
             <div className="row">
-              <label className="col-md-6">DATA DOCUMENTO</label>
-              <label className="col-md-6">DATA PAGAMENTO</label>
+              <label className="col-md-3">DATA DOCUMENTO</label>
+              <label className="col-md-3">DATA PAGAMENTO</label>
             </div>
-            <div className="row" name="address">
+            <div className="row">
               <input
-                className="col-md-6"
+                className="col-md-3"
                 type="date"
                 value={this.state.dataDocumento}
                 onChange={this.setDataDocumento}
               />
               <input
-                className="col-md-6"
+                className="col-md-3"
                 type="date"
                 value={this.state.dataPagamento}
                 onChange={this.setDataPagamento}
