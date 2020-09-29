@@ -8,11 +8,11 @@ export default class FatturaAcquisto extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_LOCAL,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_LOCAL,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_LOCAL,
-      editurl: process.env.REACT_APP_DATAURL_EDITFATTURACQUISTO_LOCAL,
-      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_LOCAL,
+      url: process.env.REACT_APP_DATAURL_FATTURACQUISTO_PROD,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURACQUISTO_PROD,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURACQUISTO_PROD,
+      editurl: process.env.REACT_APP_DATAURL_EDITFATTURACQUISTO_PROD,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
