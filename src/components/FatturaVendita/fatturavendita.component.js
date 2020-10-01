@@ -36,6 +36,7 @@ export default class FatturaVendita extends BaseComponent {
     });
 
     this.getData(this.state.url);
+
     this.getDataWithResult(this.state.speseTypeUrl).then((x) => {
       this.setState({
         speseTypeResult: x,
@@ -54,10 +55,10 @@ export default class FatturaVendita extends BaseComponent {
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
     };
-    this.createElement(this.state.addurl, fileToPost);
-    this.closeCreateDialog();
-    this.clearObjectProps();
-    window.location.reload(false);
+    this.createElement(this.state.addurl, fileToPost).then(() => {
+      this.closeCreateDialog();
+      window.location.reload(false);
+    });
   };
 
   submitFormEdit = () => {
@@ -76,10 +77,11 @@ export default class FatturaVendita extends BaseComponent {
       this.state.editurl,
       this.state.lastEditElement._id,
       fileToPost
-    );
-    this.closeCreateDialog();
-    this.clearObjectProps();
-    window.location.reload(false);
+    ).then(() => {
+      this.closeCreateDialog();
+      this.clearObjectProps();
+      window.location.reload(false);
+    });
   };
 
   clearObjectProps() {

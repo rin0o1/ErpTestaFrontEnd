@@ -53,11 +53,11 @@ export default class FatturaAcquisto extends BaseComponent {
       iva: this.state.iva,
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
-    };
-    this.createElement(this.state.addurl, fileToPost);
-    this.closeCreateDialog();
-    this.clearObjectProps();
-    window.location.reload(false);
+    }.the(() => {
+      this.createElement(this.state.addurl, fileToPost);
+      this.closeCreateDialog();
+      window.location.reload(false);
+    });
   };
 
   submitFormEdit = () => {
@@ -75,10 +75,10 @@ export default class FatturaAcquisto extends BaseComponent {
       this.state.editurl,
       this.state.lastEditElement._id,
       fileToPost
-    );
-    this.closeCreateDialog();
-    this.clearObjectProps();
-    window.location.reload(false);
+    ).then(() => {
+      this.closeCreateDialog();
+      window.location.reload(false);
+    });
   };
 
   clearObjectProps() {
