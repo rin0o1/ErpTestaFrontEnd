@@ -79,7 +79,6 @@ export default class FatturaVendita extends BaseComponent {
       fileToPost
     ).then(() => {
       this.closeCreateDialog();
-      this.clearObjectProps();
       window.location.reload(false);
     });
   };
