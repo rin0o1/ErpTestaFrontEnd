@@ -44,9 +44,8 @@ export default class Fornitori extends BaseComponent {
       postcode: this.state.postcode,
     };
 
-    this.createElement(this.state.addurl, fileToPost).then(() => {
-      window.location.reload(false);
-    });
+    this.createElement(this.state.addurl, fileToPost);
+    window.location.reload(false);
   };
 
   submitFormEdit = () => {

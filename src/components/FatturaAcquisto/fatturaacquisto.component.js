@@ -55,9 +55,9 @@ export default class FatturaAcquisto extends BaseComponent {
       tipoId: this.state.tipoId,
     };
 
-    this.createElement(this.state.addurl, fileToPost).then(() => {
-      window.location.reload(false);
-    });
+    this.createElement(this.state.addurl, fileToPost);
+
+    window.location.reload(false);
   };
 
   submitFormEdit = () => {
