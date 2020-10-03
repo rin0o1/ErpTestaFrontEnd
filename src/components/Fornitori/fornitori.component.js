@@ -44,8 +44,7 @@ export default class Fornitori extends BaseComponent {
       postcode: this.state.postcode,
     };
 
-    this.createElement(this.state.addurl, fileToPost);
-    window.location.reload(false);
+    this.createElement(this.state.addurl, fileToPost).then((x) => {});
   };
 
   submitFormEdit = () => {
@@ -63,6 +62,7 @@ export default class Fornitori extends BaseComponent {
       this.state.lastEditElement._id,
       fileToPost
     );
+    window.location.reload(false);
   };
 
   clearObjectProps() {

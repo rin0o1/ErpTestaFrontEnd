@@ -54,10 +54,7 @@ export default class FatturaAcquisto extends BaseComponent {
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
     };
-
-    this.createElement(this.state.addurl, fileToPost);
-
-    window.location.reload(false);
+    this.createElement(this.state.addurl, fileToPost).then((x) => {});
   };
 
   submitFormEdit = () => {
@@ -77,6 +74,7 @@ export default class FatturaAcquisto extends BaseComponent {
       this.state.lastEditElement._id,
       fileToPost
     );
+
     window.location.reload(false);
   };
 
@@ -163,13 +161,13 @@ export default class FatturaAcquisto extends BaseComponent {
               <input
                 className="col-md-3"
                 type="date"
-                defaultValue={e.dataDocumento.substring(0, 10)}
+                defaultValue={e.dataDocumento}
                 onChange={this.setDataDocumento}
               />
               <input
                 className="col-md-3"
                 type="date"
-                defaultValue={e.dataPagamento.substring(0, 10)}
+                defaultValue={e.dataPagamento}
                 onChange={this.setDataPagamento}
               />
             </div>
@@ -371,13 +369,24 @@ export default class FatturaAcquisto extends BaseComponent {
           <tbody>
             {this.state.result &&
               this.state.result.map((x) => {
+                try {
+                  x.dataDocumento = x.dataDocumento.substring(0, 10);
+                } catch {
+                  x.dataDocumento = " ";
+                }
+                try {
+                  x.dataPagamento = x.dataPagamento.substring(0, 10);
+                } catch {
+                  x.dataPagamento = " ";
+                }
+
                 return (
                   <tr key={x._id}>
                     <td> {x.denominazione} </td>
                     <td> {x.tipo.name} </td>
                     <td> {x.numeroFattura} </td>
-                    <td> {x.dataDocumento.substring(0, 10)} </td>
-                    <td> {x.dataPagamento.substring(0, 10)} </td>
+                    <td> {x.dataDocumento} </td>
+                    <td> {x.dataPagamento} </td>
                     <td> {x.imponibile + "€"} </td>
                     <td> {x.iva + "€"} </td>
                     <td> {x.totFattura + "€"} </td>

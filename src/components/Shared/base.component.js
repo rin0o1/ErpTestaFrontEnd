@@ -36,7 +36,7 @@ export default class BaseComponent extends Component {
   }
 
   async createElement(url, data) {
-    return await axios.post(url, data);
+    return await axios.post(url, data).result;
   }
 
   async deleteRequest(id, deleteUrl) {
