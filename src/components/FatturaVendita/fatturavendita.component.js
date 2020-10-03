@@ -56,7 +56,6 @@ export default class FatturaVendita extends BaseComponent {
       tipoId: this.state.tipoId,
     };
     this.createElement(this.state.addurl, fileToPost).then(() => {
-      this.closeCreateDialog();
       window.location.reload(false);
     });
   };
@@ -77,10 +76,9 @@ export default class FatturaVendita extends BaseComponent {
       this.state.editurl,
       this.state.lastEditElement._id,
       fileToPost
-    ).then(() => {
-      this.closeCreateDialog();
-      window.location.reload(false);
-    });
+    );
+
+    window.location.reload(false);
   };
 
   clearObjectProps() {

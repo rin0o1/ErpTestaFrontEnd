@@ -45,7 +45,6 @@ export default class Fornitori extends BaseComponent {
     };
 
     this.createElement(this.state.addurl, fileToPost).then(() => {
-      this.closeCreateDialog();
       window.location.reload(false);
     });
   };
@@ -64,10 +63,7 @@ export default class Fornitori extends BaseComponent {
       this.state.editurl,
       this.state.lastEditElement._id,
       fileToPost
-    ).then(() => {
-      this.closeCreateDialog();
-      window.location.reload(false);
-    });
+    );
   };
 
   clearObjectProps() {

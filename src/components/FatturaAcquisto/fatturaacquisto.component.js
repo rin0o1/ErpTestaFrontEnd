@@ -56,7 +56,6 @@ export default class FatturaAcquisto extends BaseComponent {
     };
 
     this.createElement(this.state.addurl, fileToPost).then(() => {
-      this.closeCreateDialog();
       window.location.reload(false);
     });
   };
@@ -72,14 +71,13 @@ export default class FatturaAcquisto extends BaseComponent {
       totaleFattura: this.state.totaleFattura,
       tipoId: this.state.tipoId,
     };
+
     this.editElement(
       this.state.editurl,
       this.state.lastEditElement._id,
       fileToPost
-    ).then(() => {
-      this.closeCreateDialog();
-      window.location.reload(false);
-    });
+    );
+    window.location.reload(false);
   };
 
   clearObjectProps() {
