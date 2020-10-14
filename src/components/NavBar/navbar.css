@@ -18,3 +18,12 @@
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
+.logo {
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  background-image: url(../../Images/logo.png);
+  background-size: cover;
+}
