@@ -14,9 +14,10 @@ export default class Costi extends BaseComponent {
   render() {
     return (
       <SinlgeSection
+      
         title="COSTI"
-        colorBorder="3px solid red"
-        priceColor="#ff000059"
+        colorPriceBorder="3px solid red"
+
       ></SinlgeSection>
     );
   }

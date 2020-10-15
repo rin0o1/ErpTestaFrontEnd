@@ -13,8 +13,7 @@ export default class Ricavi extends Component {
     return (
       <SinlgeSection
         title="RICAVI"
-        colorBorder="3px solid green"
-        priceColor="#00800052"
+        colorPriceBorder="3px solid green"        
       ></SinlgeSection>
     );
   }

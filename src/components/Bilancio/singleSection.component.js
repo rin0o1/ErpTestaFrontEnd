@@ -7,12 +7,9 @@ export default class SingleSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style_: {
-        title: {
-          backgroundColor: this.props.priceColor,
-        },
+      style_: {        
         priceSection: {
-          border: this.props.colorBorder,
+          border: this.props.colorPriceBorder,
         },
       },
     };
@@ -30,18 +27,23 @@ export default class SingleSection extends Component {
 
   render() {
     return (
+      
       <div className="col-md-6 singleSection">
-        <div style={this.state.style_.priceSection} className="boxtitle row">
-          <div className="col-md-1 offset-md-3 title "> {this.props.title}</div>
+        <div className="  boxtitle row">
+          <div className="col-md-1  title ">
+           <b className="title">{this.props.title} </b>  
+          </div>
+
           <div
-            className=" col-md-3 offset-md-5"
-            style={this.state.style_.title}
+            className="price col-md-3 offset-md-8"
+             style={this.state.style_.priceSection}
           >
-            Totale: 5000€
+            <b  > Totale: 5000€ </b>
           </div>
         </div>
         <SingleRow></SingleRow>
-      </div>
+        </div>
+        
     );
   }
 }

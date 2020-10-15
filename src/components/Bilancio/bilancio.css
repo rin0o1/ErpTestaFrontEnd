@@ -4,20 +4,51 @@
   height: 85vh;
   margin-top: 40px;
   margin-bottom: 50px !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
   margin-left: 25px;
 }
 
 .boxtitle {
-  height: 40px;
+  height: 50px;
   background: #dcdcdc78;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding-top: 8px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #343a40;
+  border: 3px solid rgba(128, 43, 78, 0.97);
+  padding-left: 100px;
+}
+
+.title {
+  font-size: 1.3em;
+}
+
+.price {
+  font-size: 1.4em;
+  padding-top: 2px;
 }
 
 .totalprice {
   background-color: #e8ba39;
   margin-bottom: 10px;
+}
+
+.paddingSection {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.singleRow {
+  background-color: #9b1d38;
+  height: 40px;
+  margin-bottom: 10px;
+  color: white;
+  padding-top: 5px;
+  font-size: 1.2em;
+}
+
+.costValue {
+  color: white;
+  padding-left: 15px;
+}
+
+.costPrice {
 }
