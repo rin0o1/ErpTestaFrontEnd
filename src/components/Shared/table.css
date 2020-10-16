@@ -73,15 +73,9 @@
     {
         margin-right: 5px;
         width: 30px;
-        height: 30px;
-        cursor: pointer;
-        background-image: url(../../Images/Icon/icon_remove-red.png);
-        background-size: cover;
-    }
-
-.editicon 
-    {
-        margin-right: 5px;
+        height: 30px;.arrowRight {
+  
+}px;
         width: 30px;
         height: 30px;
         cursor: pointer;

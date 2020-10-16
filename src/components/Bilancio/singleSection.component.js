@@ -31,6 +31,7 @@ export default class SingleSection extends Component {
       <div className="col-md-6 singleSection">
         <div className="  boxtitle row">
           <div className="col-md-1  title ">
+            
            <b className="title">{this.props.title} </b>  
           </div>
 
@@ -42,6 +43,8 @@ export default class SingleSection extends Component {
           </div>
         </div>
         <SingleRow></SingleRow>
+        <SingleRow></SingleRow>
+        
         </div>
         
     );
