@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BaseComponent from "../Shared/base.component.js";
 import "./bilancio.css";
+import Chart_ from "./chart.component";
 
 
 export default class SingleRow extends Component {
@@ -21,10 +22,10 @@ export default class SingleRow extends Component {
         }],
       
       defaultSingleRowState: "arrowRight fa fa-angle-right",
-      defaultStyleChildPanel: " row childPanelOpen",
+      defaultStyleChildPanel: " row childPanelClose",
       singleRowState: "",    
       styleChildPanel :"",
-      isOpen: false  
+      isOpen: false
       
     };
   }
@@ -36,9 +37,7 @@ export default class SingleRow extends Component {
     })
   }
 
-  getRow() {
-    return <div> Ciao</div>
-  }
+  
 
   openChildPanel = (e) =>{   
     console.log("opening panel...");    
@@ -52,7 +51,7 @@ export default class SingleRow extends Component {
 
   getChildPanel() {
     
-    return <div className={this.state.styleChildPanel}>      
+    return (
       <div className="childPanelRowContainer">        
       {this.state.data.map((x) => {
         return (
@@ -65,41 +64,61 @@ export default class SingleRow extends Component {
         )
       })}
       </div>
+    )
 
-    </div>
+    
   }
+
+
+  getChartsPanel() {
+    
+    return (      
+      <div className="childPanelChartSection">          
+        
+        <Chart_ type="Bar" ></Chart_>
+        
+        {/* <div className="ChartWidth">
+          <Chart_ type="Pie" ></Chart_>
+        </div> */}
+                
+      </div>
+    )
+  }
+
+   
 
   render() {        
-    
-    return<div> {this.state.data.map((x) => {
-      console.log(x.element.value);
+        
       return (
-          <div className="singleRowParent" >
-        <div className="singleRow row">
-          <div className="arrowSect" >
-            <i title="Apri/Chiudi sezione"
-              className={this.state.singleRowState}                         
-              onClick={ (e)=> this.openChildPanel(e)}
-            >  </i>
+        <div className="singleRowParent" >
+          <div className="singleRow row">
+            <div className="arrowSect" >
+              <i title="Apri/Chiudi sezione"
+                className={this.state.singleRowState}                         
+                onClick={ (e)=> this.openChildPanel(e)}
+              >  </i>
+            </div>
+            <div className="col-md-9 CostPatern">
+              <b> "Costo test" </b>
+            </div>        
+            <div className=" col-md-2 PricePatern">
+              <i> 5000€ </i>
+            </div>
           </div>
-          <div className="col-md-9 CostPatern">
-            <b> {x.element.value} </b>
-          </div>        
-          <div className=" col-md-2 PricePatern">
-            <i> {x.element.price +"€"} </i>
+          <div className="row">
+            <div className={this.state.styleChildPanel}>      
+              {this.getChildPanel()}
+              {this.getChartsPanel()}
+            </div>
           </div>
-        </div>
-        <div className="row">
-        {this.getChildPanel()}
-        </div>
+          
         
       </div>
-        
-        
+                
       )
-    } )} </div>
-      
+     
   }
+    
 
 }
 

@@ -7,6 +7,17 @@ export default class SingleSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [{
+        element: {
+          value: "costi generici",
+          price:"3000"
+          }
+      }, {
+          element: {
+            value: "costi generici2",
+            price: "4000"
+          }
+        }],      
       style_: {        
         priceSection: {
           border: this.props.colorPriceBorder,
@@ -42,10 +53,12 @@ export default class SingleSection extends Component {
             <b  > Totale: 5000€ </b>
           </div>
         </div>
-        <SingleRow></SingleRow>
-        <SingleRow></SingleRow>
-        
-        </div>
+        {this.state.data.map((x) => {
+        return (
+          <SingleRow childData="" ></SingleRow>          
+        )
+        })}        
+      </div>
         
     );
   }

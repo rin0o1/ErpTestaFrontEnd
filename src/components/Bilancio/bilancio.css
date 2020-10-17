@@ -87,8 +87,9 @@ ARROW DOWN  fa fa-angle-down
 /*to devide panel change height value here*/
 .childPanelRowContainer {
   padding-top: 10px;
-  background-color: #ccc;
-  height: 100%;
+  /*  background-color: #ccc;*/
+  background-color: #343a40;
+  height: 50%;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -97,7 +98,8 @@ ARROW DOWN  fa fa-angle-down
   margin-left: 1px;
   width: 100%;
   height: 30px;
-  background-color: #bb6767;
+  /* background-color: #bb6767;*/
+  background-color: #9b1d38;
   margin-bottom: 2px;
   color: white;
   padding-left: 10px;
@@ -119,4 +121,16 @@ ARROW DOWN  fa fa-angle-down
 }
 .CostChild {
   font-size: 1.1em;
+}
+
+.childPanelChartSection {
+  background-color: #343a40;
+  height: 45%;
+  width: 100%;
+  margin-top: 10px;
+  /*display: flex;*/
+}
+
+.ChartWidth {
+  width: 50%;
 }
