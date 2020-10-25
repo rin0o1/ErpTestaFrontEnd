@@ -8,11 +8,11 @@ export default class FatturaVendita extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURAVENDITA_PROD,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURAVENDITA_PROD,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURAVENDITA_PROD,
-      editurl: process.env.REACT_APP_DATAURL_EDITFATTURAVENDITA_PROD,
-      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
+      url: process.env.REACT_APP_DATAURL_FATTURAVENDITA_LOCAL,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURAVENDITA_LOCAL,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURAVENDITA_LOCAL,
+      editurl: process.env.REACT_APP_DATAURL_EDITFATTURAVENDITA_LOCAL,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_LOCAL,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
@@ -20,7 +20,7 @@ export default class FatturaVendita extends BaseComponent {
       imponibile: 0,
       iva: 0,
       totaleFattura: 0,
-      tipoId: "",
+      typeGroup: "",
       speseTypeResult: [],
     };
   }
@@ -53,7 +53,7 @@ export default class FatturaVendita extends BaseComponent {
       imponibile: this.state.imponibile,
       iva: this.state.iva,
       totaleFattura: this.state.totaleFattura,
-      tipoId: this.state.tipoId,
+      typeGroup: this.state.typeGroup,
     };
     this.createElement(this.state.addurl, fileToPost);
     window.location.reload(false);
@@ -68,7 +68,7 @@ export default class FatturaVendita extends BaseComponent {
       imponibile: this.state.imponibile,
       iva: this.state.iva,
       totaleFattura: this.state.totaleFattura,
-      tipoId: this.state.tipoId,
+      typeGroup: this.state.typeGroup,
     };
 
     this.editElement(
@@ -89,7 +89,7 @@ export default class FatturaVendita extends BaseComponent {
       imponibile: 0,
       iva: 0,
       totaleFattura: 0,
-      tipoId: "",
+      typeGroup: "",
     });
   }
 
@@ -100,7 +100,7 @@ export default class FatturaVendita extends BaseComponent {
   setImponibile = (e) => this.setState({ imponibile: e.target.value });
   setIva = (e) => this.setState({ iva: e.target.value });
   setTotaleFattura = (e) => this.setState({ totaleFattura: e.target.value });
-  setTipoId = (e) => this.setState({ tipoId: e.value });
+  setTipoId = (e) => this.setState({ typeGroup: e.value });
 
   edit() {
     if (!this.state.showEditDialog) return;
@@ -108,7 +108,7 @@ export default class FatturaVendita extends BaseComponent {
     var e = this.state.lastEditElement;
 
     var speseType = this.state.speseTypeResult.find(
-      (x) => x.value === e.tipo._id
+      (x) => x.value === e.typeGroup._id
     );
 
     return (
@@ -384,7 +384,7 @@ export default class FatturaVendita extends BaseComponent {
                 return (
                   <tr key={x._id}>
                     <td> {x.denominazione} </td>
-                    <td> {x.tipo.name} </td>
+                    <td> {x.typeGroup.name} </td>
                     <td> {x.numeroFattura} </td>
                     <td> {x.dataDocumento} </td>
                     <td> {x.dataPagamento} </td>

@@ -31,6 +31,10 @@ export default class BaseComponent extends Component {
     });
   }
 
+  getDataWithResultSync(url) {
+    return axios.get(url);
+  }
+
   async editElement(url, id, data) {
     return await axios.post(url + id, data);
   }

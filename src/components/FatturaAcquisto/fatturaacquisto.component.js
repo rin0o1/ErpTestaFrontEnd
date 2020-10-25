@@ -20,7 +20,7 @@ export default class FatturaAcquisto extends BaseComponent {
       imponibile: 0,
       iva: 0,
       totaleFattura: 0,
-      tipoId: "",
+      typeGroup: "",
       speseTypeResult: [],
     };
   }
@@ -52,7 +52,7 @@ export default class FatturaAcquisto extends BaseComponent {
       imponibile: this.state.imponibile,
       iva: this.state.iva,
       totaleFattura: this.state.totaleFattura,
-      tipoId: this.state.tipoId,
+      typeGroup: this.state.typeGroup,
     };
     this.createElement(this.state.addurl, fileToPost);
     window.location.reload(false);
@@ -67,7 +67,7 @@ export default class FatturaAcquisto extends BaseComponent {
       imponibile: this.state.imponibile,
       iva: this.state.iva,
       totaleFattura: this.state.totaleFattura,
-      tipoId: this.state.tipoId,
+      typeGroup: this.state.typeGroup,
     };
 
     this.editElement(
@@ -88,7 +88,7 @@ export default class FatturaAcquisto extends BaseComponent {
       imponibile: 0,
       iva: 0,
       totaleFattura: 0,
-      tipoId: "",
+      typeGroup: "",
     });
   }
 
@@ -99,7 +99,7 @@ export default class FatturaAcquisto extends BaseComponent {
   setImponibile = (e) => this.setState({ imponibile: e.target.value });
   setIva = (e) => this.setState({ iva: e.target.value });
   setTotaleFattura = (e) => this.setState({ totaleFattura: e.target.value });
-  setTipoId = (e) => this.setState({ tipoId: e.value });
+  setTipoId = (e) => this.setState({ typeGroup: e.value });
 
   edit() {
     if (!this.state.showEditDialog) return;
@@ -107,7 +107,7 @@ export default class FatturaAcquisto extends BaseComponent {
     var e = this.state.lastEditElement;
 
     var speseType = this.state.speseTypeResult.find(
-      (x) => x.value === e.tipo._id
+      (x) => x.value === e.typeGroup._id
     );
 
     return (
@@ -384,7 +384,7 @@ export default class FatturaAcquisto extends BaseComponent {
                 return (
                   <tr key={x._id}>
                     <td> {x.denominazione} </td>
-                    <td> {x.tipo.name} </td>
+                    <td> {x.typeGroup.name} </td>
                     <td> {x.numeroFattura} </td>
                     <td> {x.dataDocumento} </td>
                     <td> {x.dataPagamento} </td>
@@ -401,8 +401,8 @@ export default class FatturaAcquisto extends BaseComponent {
                           ></i>
                         </div>
                         <div
-                          title="Rimuovi"
                           onClick={(e) => this.delete(e, this.state.deleteurl)}
+                          title="Rimuovi"
                         >
                           <i id={x._id} className=" remove fa fa-trash"></i>
                         </div>

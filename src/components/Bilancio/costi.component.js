@@ -6,18 +6,27 @@ import FooterModel from "../../models/footer.model";
 export default class Costi extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      url: "http://localhost:5000/bilancio",
+      data: [],
+    };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getDataWithResultSync(this.state.url).then((x) => {
+      this.setState({
+        data: x.data,
+      });
+    });
+  }
 
   render() {
     return (
       <SinlgeSection
-      
+        data_={this.state.data}
         title="COSTI"
         colorPriceBorder="3px solid red"
-
+        isCost="true"
       ></SinlgeSection>
     );
   }
