@@ -7,7 +7,7 @@ export default class Costi extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {
-      url: "https:/erptestabackend.herokuapp.com/bilancio",
+      url: "https://erptestabackend.herokuapp.com/bilancio",
       data: [],
     };
   }
@@ -19,6 +19,7 @@ export default class Costi extends BaseComponent {
       });
     });
   }
+  z;
 
   render() {
     return (
