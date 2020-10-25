@@ -8,11 +8,11 @@ export default class FatturaVendita extends BaseComponent {
     super(props);
 
     this.state = {
-      url: process.env.REACT_APP_DATAURL_FATTURAVENDITA_LOCAL,
-      addurl: process.env.REACT_APP_DATAURL_ADDFATTURAVENDITA_LOCAL,
-      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURAVENDITA_LOCAL,
-      editurl: process.env.REACT_APP_DATAURL_EDITFATTURAVENDITA_LOCAL,
-      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_LOCAL,
+      url: process.env.REACT_APP_DATAURL_FATTURAVENDITA_PROD,
+      addurl: process.env.REACT_APP_DATAURL_ADDFATTURAVENDITA_PROD,
+      deleteurl: process.env.REACT_APP_DATAURL_DELETEFATTURAVENDITA_PROD,
+      editurl: process.env.REACT_APP_DATAURL_EDITFATTURAVENDITA_PROD,
+      speseTypeUrl: process.env.REACT_APP_DATAURL_SPESETYPEHINT_PROD,
       denominazione: "",
       numeroFattura: "",
       dataDocumento: "",
