@@ -91,7 +91,7 @@ ARROW DOWN  fa fa-angle-down
   background-color: #343a40;
   height: 50%;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
 }
 
 .childPanelRow {
@@ -129,8 +129,4 @@ ARROW DOWN  fa fa-angle-down
   width: 100%;
   margin-top: 10px;
   /*display: flex;*/
-}
-
-.ChartWidth {
-  width: 50%;
 }

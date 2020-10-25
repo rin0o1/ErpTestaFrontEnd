@@ -22,8 +22,6 @@ export default class SingleSection extends Component {
 
   static getDerivedStateFromProps(props, state) {
     var c = props.data_;
-    console.log("ccccccccc");
-
     return { data: props.data_ };
   }
 
@@ -39,7 +37,7 @@ export default class SingleSection extends Component {
             className="price col-md-3 offset-md-8"
             style={this.state.style_.priceSection}
           >
-            <b> {this.state.data.totCost} </b>
+            <b> {this.state.data.totCost + "€"} </b>
           </div>
         </div>
 

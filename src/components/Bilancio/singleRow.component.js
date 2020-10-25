@@ -14,6 +14,8 @@ export default class SingleRow extends Component {
       singleRowState: "",
       styleChildPanel: "",
       isOpen: false,
+      childNameInArr: [],
+      childValueInArr: [],
     };
   }
 
@@ -66,9 +68,19 @@ export default class SingleRow extends Component {
   }
 
   getChartsPanel() {
+    var name = [];
+    var value = [];
+    this.state.data.children.map((x) => {
+      var valueInPerc = (x.child.tot * 100) / this.state.totParent;
+      value.push(Math.trunc(valueInPerc));
+    });
     return (
-      <div className="childPanelChartSection">
-        <Chart_ type="Bar"></Chart_>
+      <div className="childPanelChartSection ">
+        <Chart_
+          type="Bar"
+          totParent={this.state.totParent}
+          childValueArr={value}
+        ></Chart_>
 
         {/* <div className="ChartWidth">
           <Chart_ type="Pie" ></Chart_>
@@ -91,7 +103,13 @@ export default class SingleRow extends Component {
             </i>
           </div>
           <div className="col-md-9 CostPatern">
-            <b> {this.state.data.parent.name} </b>
+            <b>
+              {" "}
+              {this.state.data.name +
+                "    (" +
+                this.state.data.children.length +
+                ")"}
+            </b>
           </div>
           <div className=" col-md-2 PricePatern">
             <i> {this.state.totParent + "€"} </i>
