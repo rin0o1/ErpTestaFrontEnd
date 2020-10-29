@@ -14,9 +14,25 @@ export default class SingleRow extends Component {
       singleRowState: "",
       styleChildPanel: "",
       isOpen: false,
-      childNameInArr: [],
-      childValueInArr: [],
+      colorArr: [],
     };
+  }
+
+  random_rgba() {
+    var o = Math.round,
+      r = Math.random,
+      s = 255;
+    return (
+      "rgba(" +
+      o(r() * s) +
+      "," +
+      o(r() * s) +
+      "," +
+      o(r() * s) +
+      "," +
+      r().toFixed(1) +
+      ")"
+    );
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -27,9 +43,15 @@ export default class SingleRow extends Component {
   }
 
   componentDidMount() {
+    var c = [];
+    for (var i = 0; i < this.state.data.children.length; i++) {
+      c.push(this.random_rgba());
+    }
+
     this.setState({
       singleRowState: this.state.defaultSingleRowState,
       styleChildPanel: this.state.defaultStyleChildPanel,
+      colorArr: c,
     });
   }
 
@@ -50,9 +72,12 @@ export default class SingleRow extends Component {
     return (
       <div className="childPanelRowContainer">
         {this.state.data.children &&
-          this.state.data.children.map((x) => {
+          this.state.data.children.map((x, i) => {
             return (
-              <div className="childPanelRow row ">
+              <div
+                className="childPanelRow row "
+                //style={{ background: this.state.colorArr[i] }}
+              >
                 <div className="col-md-9  title CostChild">
                   {" "}
                   {x.child.name}{" "}
@@ -71,14 +96,18 @@ export default class SingleRow extends Component {
     var name = [];
     var value = [];
     this.state.data.children.map((x) => {
+      name.push(x.child.name);
       var valueInPerc = (x.child.tot * 100) / this.state.totParent;
       value.push(Math.trunc(valueInPerc));
     });
+
     return (
       <div className="childPanelChartSection ">
         <Chart_
           type="Bar"
           totParent={this.state.totParent}
+          colors={this.state.colorArr}
+          name={name}
           childValueArr={value}
         ></Chart_>
 

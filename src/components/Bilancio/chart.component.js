@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Bar, Line, Pie, Pir } from "react-chartjs-2";
+import { Bar, HorizontalBar, Line, Pie, Pir } from "react-chartjs-2";
 
 export default class Chart extends Component {
   constructor(props) {
@@ -43,25 +43,21 @@ export default class Chart extends Component {
 
   componentDidMount() {
     var lables_ = [];
+    this.props.childValueArr.push(100);
     var length = this.props.childValueArr.length;
     var backColor = [];
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i < length - 1; i++) {
       lables_.push(String.fromCharCode(65 + i));
       backColor.push("#e05c30");
     }
+
     this.setState({
       chartData: {
         labels: lables_,
-        //labels: this.props.childNameArr,
         datasets: [
           {
             label: "Valori in percentuali",
             backgroundColor: backColor,
-            fillColor: "rgba(128, 43, 78, 0.97)",
-            strokeColor: "rgba(128, 43, 78, 0.97)",
-            pointColor: "rgba(128, 43, 78, 0.97)",
-            pointStrokeColor: "#aaa",
-            pointHighlightStroke: "rgba(220,220,220,1)",
             data: this.props.childValueArr,
           },
         ],
