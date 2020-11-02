@@ -24,6 +24,7 @@ export default class Bilancio extends BaseComponent {
     return (
       <div className="row">
         <Costi></Costi>
+        <Ricavi></Ricavi>
       </div>
     );
   }

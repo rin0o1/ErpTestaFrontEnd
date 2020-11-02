@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import BaseComponent from "../Shared/base.component.js";
 import SinlgeSection from "../Bilancio/singleSection.component";
-import FooterModel from "../../models/footer.model";
 
 export default class Costi extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {
-      url: "https://erptestabackend.herokuapp.com/bilancio",
+      url: process.env.REACT_APP_DATA_BILANCIO_LOCAL,
       data: [],
     };
   }
@@ -19,7 +18,6 @@ export default class Costi extends BaseComponent {
       });
     });
   }
-  z;
 
   render() {
     return (
